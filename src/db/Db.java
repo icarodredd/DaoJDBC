@@ -13,7 +13,8 @@ public class Db {
 	private static Connection con = null;
 
 	public static Connection getConnection() {
-		try (Connection connection = DriverManager.getConnection(url, username, password)) {
+		try {
+			Connection connection = DriverManager.getConnection(url, username, password);
 			System.out.println("Database connected!");
 			con = connection;
 		} catch (SQLException e) {

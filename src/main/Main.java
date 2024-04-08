@@ -1,29 +1,16 @@
 package main;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import db.Db;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
+import model.entities.Seller;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Connection con = Db.getConnection();
-		try {
-			con.close();
-		} catch (SQLException e) {
 
-			e.printStackTrace();
-		}
-
-		con = Db.getConnection();
-		try {
-			con.close();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-
+		SellerDao sellerDao = DaoFactory.createSellerDao();
+		Seller seller = sellerDao.findById(1);
+		System.out.println(seller);
 	}
 
 }
